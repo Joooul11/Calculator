@@ -1,0 +1,21 @@
+button {
+    background-color: #f0f0f0; /* Light gray background */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    color: #333; /* Dark text color */
+    font-size: 18px; /* Larger text size */
+    padding: 15px 20px; /* Padding for size and spacing */
+    margin: 5px; /* Margin between buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+button:hover {
+    background-color: #e0e0e0; /* Slightly darker gray on hover */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+button:active {
+    background-color: #d0d0d0; /* Even darker gray when pressed */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow effect when pressed */
+}
