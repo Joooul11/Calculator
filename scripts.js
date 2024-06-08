@@ -3,6 +3,7 @@ let buttonsNumeric = document.querySelectorAll('.num-button');
 let displayDiv = document.querySelector('div.display');
 let equalBtn = document.getElementById(`equals`);
 let clearBtn = document.getElementById(`clear`);
+let decimalBtn = document.getElementById(`decimal`);
 
 let firstnumber = 0;
 let secondnumber = 0;
@@ -14,23 +15,42 @@ function handleButtonClick(event){
     displayDiv.innerHTML = currentContent + button.value;
 }
 
+function parseAndRound(str) {
+    let num = parseFloat(str);
+    if (isNaN(num)) {
+        return NaN;
+    }
+    return parseFloat(num.toFixed(3));
+}
+
 function handleOpButtonClick(event){
     let currentContent = displayDiv.innerHTML;
-    firstnumber = parseInt(currentContent);
+    firstnumber = parseAndRound(currentContent);
     console.log('First number:', firstnumber); // Add this
     operator = event.target.value;
     console.log('Operator:', operator); // And this
     displayDiv.innerHTML = '';
 }
 
+
 function handleEqualButtonClick(event){
     let currentContent = displayDiv.innerHTML;
-    secondnumber = parseInt(currentContent);
+    secondnumber = parseAndRound(currentContent);
     console.log('Second number:', secondnumber); // Add this
     let result = operate(operator, firstnumber, secondnumber);
     console.log('Result:', result); // And this
     displayDiv.innerHTML = result;
 }
+
+
+function handledecimalButtonClick(event){
+    let currentContent = displayDiv.innerHTML;
+    displayDiv.innerHTML = currentContent + '.';
+
+}
+
+
+decimalBtn.addEventListener(`click`, handledecimalButtonClick);
 
 
 function clearDisplay(){
@@ -62,6 +82,9 @@ function multiply(a,b){
 }
 
 function divide(a,b){
+    if (b == 0){
+        return 'Error';
+    }
     return a / b;
 }
 

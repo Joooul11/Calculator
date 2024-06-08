@@ -47,3 +47,9 @@ button:active {
     background-color: #d0d0d0; /* Even darker gray when pressed */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow effect when pressed */
 }
+
+/* Clear button style */
+#clear {
+    background-color: #ffcccc; /* Light red background */
+    color: #cc3333; /* Dark red text color */
+}
