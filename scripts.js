@@ -4,6 +4,7 @@ let displayDiv = document.querySelector('div.display');
 let equalBtn = document.getElementById(`equals`);
 let clearBtn = document.getElementById(`clear`);
 let decimalBtn = document.getElementById(`decimal`);
+let backspaceBtn = document.getElementById(`backspace`);
 
 let firstnumber = 0;
 let secondnumber = 0;
@@ -13,6 +14,11 @@ function handleButtonClick(event){
     button = event.target;
     currentContent = displayDiv.innerHTML;
     displayDiv.innerHTML = currentContent + button.value;
+}
+
+function handleBackspaceButtonClick(event){
+    let currentContent = displayDiv.innerHTML;
+    displayDiv.innerHTML = currentContent.slice(0, -1);
 }
 
 function parseAndRound(str) {
@@ -68,6 +74,8 @@ opButtons.forEach(button =>{
 })
 
 equalBtn.addEventListener(`click`, handleEqualButtonClick)
+
+backspaceBtn.addEventListener(`click`, handleBackspaceButtonClick);
 
 function add(a,b){
     return a + b;
