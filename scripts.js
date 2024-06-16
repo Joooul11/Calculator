@@ -12,9 +12,17 @@ let operator = '';
 let result = NaN
 
 function handleButtonClick(event){
+    if (isNaN(result)){
     button = event.target;
     currentContent = displayDiv.innerHTML;
-    displayDiv.innerHTML = currentContent + button.value;
+    displayDiv.innerHTML = currentContent + button.value;}
+    else{
+        displayDiv.innerHTML = '';
+        button = event.target;
+        currentContent = displayDiv.innerHTML;
+        displayDiv.innerHTML = currentContent + button.value;
+        result = NaN;
+    }
 }
 
 function handleBackspaceButtonClick(event){
@@ -42,7 +50,6 @@ function handleEqualButtonClick(event){
     result = parseAndRound(operate(operator, firstnumber, secondnumber));
     console.log('Result:', result); // And this
     displayDiv.innerHTML = ` ${currentContent} = ${result} `;
-    firstnumber = result;
 }
 
 
@@ -135,6 +142,33 @@ function operate(operator, a, b){
         return divide(a,b);
     }
 }
+
+
+document.addEventListener('keydown', function(event) {
+    const key = event.key;  
+    let button;
+
+    if (key >= '0' && key <= '9') {
+        button = document.querySelector(`button[value="${key}"]`);
+    } else if (key === '+') {
+        button = document.querySelector('button[value="+"]');
+    } else if (key === '-') {
+        button = document.querySelector('button[value="-"]');
+    } else if (key === '*') {
+        button = document.querySelector('button[value="*"]');
+    } else if (key === '/') {
+        button = document.querySelector('button[value="/"]');
+    } else if (key === 'Enter') { 
+        button = document.querySelector('button[value="="]');
+    } else if (key === 'Backspace') {  
+        button = document.querySelector('button[id="clear"]');
+    }
+
+    // Trigger the button's click event
+    if (button) {
+        button.click();
+    }
+});
 
 
 
